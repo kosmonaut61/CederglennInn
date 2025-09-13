@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@excaliburjs/plugin-pathfinding':
-        specifier: latest
-        version: 0.30.0(excalibur@0.30.3)
+        specifier: ^0.30.0
+        version: 0.30.0(excalibur@0.30.0)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.62.0(react@19.1.1))
@@ -120,8 +120,8 @@ importers:
         specifier: 8.5.1
         version: 8.5.1(react@19.1.1)
       excalibur:
-        specifier: latest
-        version: 0.30.3
+        specifier: ^0.30.0
+        version: 0.30.0
       geist:
         specifier: latest
         version: 1.5.1(next@15.2.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
@@ -1385,8 +1385,8 @@ packages:
   eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
 
-  excalibur@0.30.3:
-    resolution: {integrity: sha512-RUP3qQ6tFe9BJxvqh6p/I0B9rKMu+KGlHZruJyVOohiYUtCP0LsRgkVHxezvWtWsvCElVBL4PeCooE4KPlIldA==}
+  excalibur@0.30.0:
+    resolution: {integrity: sha512-hZAbydJmxjMCFYGZbGclNjKNdAVJfX7D1HFyUNcb+jHLTHqp1RnzJpqoPXviwYQS0Ruh1oNGBXQKb4c75WUlOg==}
 
   fast-equals@5.2.2:
     resolution: {integrity: sha512-V7/RktU11J3I36Nwq2JnZEM7tNm17eBJz+u25qdxBZeCKiX6BkVSZQjwWIr+IobgnZy+ag73tTZgZi7tr0LrBw==}
@@ -1802,9 +1802,9 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@excaliburjs/plugin-pathfinding@0.30.0(excalibur@0.30.3)':
+  '@excaliburjs/plugin-pathfinding@0.30.0(excalibur@0.30.0)':
     dependencies:
-      excalibur: 0.30.3
+      excalibur: 0.30.0
 
   '@floating-ui/core@1.7.3':
     dependencies:
@@ -2914,7 +2914,7 @@ snapshots:
 
   eventemitter3@4.0.7: {}
 
-  excalibur@0.30.3: {}
+  excalibur@0.30.0: {}
 
   fast-equals@5.2.2: {}
 
