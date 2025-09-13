@@ -92,6 +92,9 @@ export default function SimpleGame() {
           }
         }
         
+        // Update player movement
+        updatePlayerMovement()
+        
         // Draw player
         drawPlayer(p)
       }
@@ -100,8 +103,13 @@ export default function SimpleGame() {
         const tileX = Math.floor(p.mouseX / tileSize)
         const tileY = Math.floor(p.mouseY / tileSize)
         
+        console.log(`Clicked at pixel (${p.mouseX}, ${p.mouseY}) -> tile (${tileX}, ${tileY})`)
+        
         if (isValidTarget(tileX, tileY, gameTiles)) {
+          console.log(`Valid target! Moving to (${tileX}, ${tileY})`)
           movePlayerTo(tileX, tileY)
+        } else {
+          console.log(`Invalid target at (${tileX}, ${tileY}) - not walkable`)
         }
       }
 
@@ -201,8 +209,7 @@ export default function SimpleGame() {
         console.log(`Moving player to (${targetX}, ${targetY})`)
       }
 
-      // Animation loop
-      const animatePlayer = () => {
+      const updatePlayerMovement = () => {
         setGameState(prev => {
           if (!prev.isMoving) return prev
           
@@ -211,6 +218,7 @@ export default function SimpleGame() {
           
           if (Math.abs(dx) < 0.01 && Math.abs(dy) < 0.01) {
             // Reached target
+            console.log(`Reached target (${prev.targetX}, ${prev.targetY})`)
             return {
               ...prev,
               playerX: prev.targetX,
@@ -226,12 +234,7 @@ export default function SimpleGame() {
             }
           }
         })
-        
-        requestAnimationFrame(animatePlayer)
       }
-      
-      // Start animation loop
-      animatePlayer()
     }
 
     p5InstanceRef.current = new p5(sketch, canvasRef.current)
