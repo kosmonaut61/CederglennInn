@@ -49,14 +49,9 @@ export default function SimpleGame() {
       let playerImg: p5.Image | null = null
       let grassImg: p5.Image | null = null
       let gameTiles: Tile[][] = []
+      let imagesLoaded = false
 
-      p.preload = () => {
-        // Load images
-        playerImg = p.loadImage('/dude.png')
-        grassImg = p.loadImage('/roguelike.png')
-      }
-
-      p.setup = () => {
+      p.setup = async () => {
         const canvasWidth = 800
         const canvasHeight = 600
         p.createCanvas(canvasWidth, canvasHeight)
@@ -71,6 +66,17 @@ export default function SimpleGame() {
         // Generate tiles
         gameTiles = generateTiles(cols, rows)
         setTiles(gameTiles)
+        
+        // Load images asynchronously
+        try {
+          playerImg = await p.loadImage('/dude.png')
+          grassImg = await p.loadImage('/roguelike.png')
+          imagesLoaded = true
+          console.log('Images loaded successfully')
+        } catch (error) {
+          console.error('Failed to load images:', error)
+          imagesLoaded = true // Continue without images
+        }
         
         console.log('P5.js game initialized')
       }
@@ -160,7 +166,7 @@ export default function SimpleGame() {
         const pixelX = gameState.playerX * tileSize
         const pixelY = gameState.playerY * tileSize
         
-        if (playerImg) {
+        if (imagesLoaded && playerImg) {
           // Draw player image
           p.image(playerImg, pixelX + 2, pixelY + 2, tileSize - 4, tileSize - 4)
         } else {
