@@ -1,8 +1,8 @@
 import { ImageSource, SpriteSheet } from "excalibur"
 
-// Import assets from the original project
-const dudeImageUrl = "/sample-pathfinding-main/src/assets/dude.png"
-const roguelikeImageUrl = "/sample-pathfinding-main/src/assets/roguelike.png"
+// Import assets from the public directory
+const dudeImageUrl = "/dude.png"
+const roguelikeImageUrl = "/roguelike.png"
 
 export class GameResources {
   public static plrImage: ImageSource
