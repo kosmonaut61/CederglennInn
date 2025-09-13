@@ -37,10 +37,18 @@ export default function PathfindingGame() {
   const [allowDiagonals, setAllowDiagonals] = useState(false)
   const [isGameLoaded, setIsGameLoaded] = useState(false)
   const [loadingError, setLoadingError] = useState<string | null>(null)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    // Initialize game when component mounts
-    initializeGame()
+    // Set client state
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    // Initialize game when component mounts and is on client
+    if (isClient) {
+      initializeGame()
+    }
 
     return () => {
       // Cleanup game when component unmounts
@@ -48,7 +56,7 @@ export default function PathfindingGame() {
         gameRef.current.dispose()
       }
     }
-  }, [])
+  }, [isClient])
 
   useEffect(() => {
     // Update diagonal settings when changed
@@ -61,7 +69,7 @@ export default function PathfindingGame() {
   }, [allowDiagonals, isGameLoaded])
 
   const initializeGame = async () => {
-    if (!canvasRef.current) return
+    if (!canvasRef.current || typeof window === 'undefined') return
 
     try {
       console.log("[v0] Initializing Excalibur game...")
@@ -189,6 +197,16 @@ export default function PathfindingGame() {
     return <Badge className="bg-green-500">Idle</Badge>
   }
 
+  if (!isClient) {
+    return (
+      <div className="flex flex-col items-center gap-6">
+        <div className="w-[800px] h-[600px] border border-border rounded-lg shadow-lg bg-black flex items-center justify-center">
+          <div className="text-white text-lg">Loading game...</div>
+        </div>
+      </div>
+    )
+  }
+
   if (loadingError) {
     return (
       <div className="flex flex-col items-center gap-6">
@@ -197,7 +215,11 @@ export default function PathfindingGame() {
             Failed to load game: {loadingError}. Please refresh the page to try again.
           </AlertDescription>
         </Alert>
-        <Button onClick={() => window.location.reload()}>Reload Game</Button>
+        <Button onClick={() => {
+          if (typeof window !== 'undefined') {
+            window.location.reload()
+          }
+        }}>Reload Game</Button>
       </div>
     )
   }

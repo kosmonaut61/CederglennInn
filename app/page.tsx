@@ -1,4 +1,17 @@
-import PathfindingGame from "@/components/pathfinding-game"
+"use client"
+
+import dynamic from "next/dynamic"
+
+const PathfindingGame = dynamic(() => import("@/components/pathfinding-game"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex flex-col items-center gap-6">
+      <div className="w-[800px] h-[600px] border border-border rounded-lg shadow-lg bg-black flex items-center justify-center">
+        <div className="text-white text-lg">Loading game...</div>
+      </div>
+    </div>
+  ),
+})
 
 export default function Home() {
   return (
