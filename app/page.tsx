@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 
-const PathfindingGame = dynamic(() => import("@/components/pathfinding-game"), {
+const SimpleGame = dynamic(() => import("@/components/simple-game"), {
   ssr: false,
   loading: () => (
     <div className="flex flex-col items-center gap-6">
@@ -18,10 +18,10 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <div className="container mx-auto py-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Pathfinding Game</h1>
-          <p className="text-muted-foreground">Click on tiles to move the character using A* or Dijkstra pathfinding</p>
+          <h1 className="text-4xl font-bold text-foreground mb-2">Simple Pathfinding Game</h1>
+          <p className="text-muted-foreground">Click on green tiles to move the character around the world</p>
         </div>
-        <PathfindingGame />
+        <SimpleGame />
       </div>
     </main>
   )
