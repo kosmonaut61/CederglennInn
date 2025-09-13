@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@excaliburjs/plugin-pathfinding": "^0.30.0",
+    "@excaliburjs/plugin-pathfinding": "0.29.0-alpha.1",
     "@hookform/resolvers": "^3.10.0",
     "@peasy-lib/peasy-ui": "latest",
     "@radix-ui/react-accordion": "1.2.2",
@@ -46,7 +46,7 @@
     "cmdk": "1.0.4",
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
-    "excalibur": "^0.30.0",
+    "excalibur": "^0.29.0",
     "geist": "latest",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",

@@ -19,20 +19,9 @@ export class Player extends Actor {
     })
 
     this.events = events
-    
-    // Ensure events are properly initialized
-    if (!this.events) {
-      this.events = {
-        onMoveComplete: () => {},
-        onMoveStart: () => {}
-      }
-    }
   }
 
   public onInitialize(_engine: Engine): void {
-    // Call parent onInitialize first
-    super.onInitialize(_engine)
-    
     try {
       const playerSprite = GameResources.getPlayerSprite()
       this.graphics.use(playerSprite)
